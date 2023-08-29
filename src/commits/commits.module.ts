@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { CommitsService } from './service/commits.service';
 import { CommitsController } from './controller/commits.controller';
-import { ConfigModule } from 'src/config/config.module';
 import { HttpModule } from '@nestjs/axios';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [HttpModule, ConfigModule],

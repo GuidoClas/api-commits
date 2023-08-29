@@ -8,7 +8,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const logger = new Logger('Bootstrap');
 
-  app.enableCors({ credentials: true, origin: 'https://commits-web.vercel.app', methods: 'GET,HEAD,PUT,PATCH,POST,DELETE' })
+  app.enableCors({ credentials: true, origin: ['https://commits-web.vercel.app', 'http://localhost:3000'], methods: 'GET,HEAD,PUT,PATCH,POST,DELETE' })
 
   app.setGlobalPrefix('api/v1');
   app.useGlobalPipes(

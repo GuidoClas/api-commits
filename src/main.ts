@@ -28,8 +28,8 @@ async function bootstrap() {
   
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/v1/swagger', app, document, {
-    customSiteTitle: 'Backend Generator',
-    customfavIcon: 'https://avatars.githubusercontent.com/u/6936373?s=200&v=4',
+    customSiteTitle: 'Commit API Docs',
+    customfavIcon: 'https://github.com/swagger.png?size=200',
     customJs: [
       'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-bundle.min.js',
       'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-standalone-preset.min.js',

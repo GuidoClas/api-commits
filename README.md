@@ -1,73 +1,129 @@
+
+<br />
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <a href="https://commits-web.vercel.app">
+    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="Logo" width="80" height="80">
+  </a>
+
+  <h3 align="center">COMMIT HISTORY API</h3>
+
+  <p align="center">
+    API Backend for commits-web project
+    <br />
+    <a href="https://api-commits.vercel.app/api/v1/docs"><strong>API Docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/GuidoClas/commits-web/issues">Report Bug/Feature</a>
+  </p>
+   
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Descriptions 
+<!-- Index -->
+<details open="open">
+  <summary><h2 style="display: inline-block">Index</h2></summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About</a>
+      <ul>
+            <li><a href="#features">Features</a></li>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="run-on-localhost">Run on Localhost</a></li>
+      </ul>
+    </li>
+    <li><a href="#author">Author</a></li>
+  </ol>
+</details>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
 
-```bash
-$ npm install
-```
+<!-- ABOUT THE PROJECT -->
+## About
 
-## Running the app
+[![COMMIT_API][product-screenshot]](https://api-commits.vercel.app/api/v1/docs)
 
-```bash
-# development
-$ npm run start
+API for Git Commit history viewer
 
-# watch mode
-$ npm run start:dev
+<!-- Features -->
+## Features
+Displaying current and next features:
 
-# production mode
-$ npm run start:prod
-```
+- [x] Get all Branches
+- [x] Get commits by Branch
+- [x] Get commits by SHA
+- [ ] Get User Repositories
+- [ ] Get commits by User repository
 
-## Test
+See the [open issues](https://github.com/GuidoClas/api-commits/issues) for a list of proposed features, known issues or request a feature.
 
-```bash
-# unit tests
-$ npm run test
+## Built With These Technologies
 
-# e2e tests
-$ npm run test:e2e
+* [Nest.js](https://docs.nestjs.com/)
+* [OpenAPI](https://swagger.io/specification/)
+* [Node.js](https://nodejs.org/es)
+* [Jest](https://jestjs.io/)
+* [axios](https://axios-http.com/docs/intro)
+* [Github API](https://docs.github.com/es/rest)
 
-# test coverage
-$ npm run test:cov
-```
 
-## Support
+<!-- GETTING STARTED -->
+## Getting Started
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+To get a local copy up and running follow these simple steps.
 
-## Stay in touch
+### Prerequisites
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+To run this project on your local machine or deploy it to a server we need to use or have the following tools:
+* ***Nest.js***
+  ```sh
+  npm i -g @nestjs/cli
+  ```
+* ***Node.js > 17.10***
 
-## License
+  https://nodejs.org/es/download/
 
-Nest is [MIT licensed](LICENSE).
+* ***git*** 
+
+  https://git-scm.com/
+
+### Run on Localhost 
+
+1. First we need to clone this repository
+    ```sh
+   git clone https://github.com/GuidoClas/api-commits.git
+   ```
+2. Navigate to the root folder of the project and create an environment file with this variables
+    ```sh
+   .env
+    PORT=3000
+    GITHUB_API_URL=https://api.github.com/repos/GuidoClas/commits-web
+   ```
+3. Install dependencies opening a terminal of your choice
+    ```sh
+   npm install | yarn install
+   ```
+4. Run the project on development mode
+    ```sh
+   npm run start:dev
+   ```
+5. Run the tests
+    ```sh
+   npm run test
+   ```
+<!-- Author -->
+## Author
+
+***Guido Clas***
+
+* Website: [guidoclas.com](https://guidoclas.com)
+*	Github: [@GuidoClas](https://github.com/GuidoClas)
+*	LinkedIn: [Guido Clas](https://www.linkedin.com/in/guido-clas/)
+
+[product-screenshot]: assets/back_swagger.png

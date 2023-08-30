@@ -29,7 +29,7 @@ async function bootstrap() {
     .build();
   
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api/v1/swagger', app, document, {
+  SwaggerModule.setup('api/v1/docs', app, document, {
     customSiteTitle: 'Commit API Docs',
     customfavIcon: 'https://github.com/swagger.png?size=200',
     customJs: [

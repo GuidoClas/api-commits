@@ -2,7 +2,7 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AxiosError } from 'axios';
-import { Observable, map, catchError, throwError } from 'rxjs';
+import { Observable, map, catchError } from 'rxjs';
 
 @Injectable()
 export class CommitsService {
@@ -27,6 +27,9 @@ export class CommitsService {
   findOne(sha: string): Observable<any> {
     const data = this.httpService.get<any>(`${this.githubApiUrl}/commits/${sha}`)
     .pipe(
+      catchError((error: AxiosError) => {
+        throw error;
+      }),
       map(response => response.data)
     );
 

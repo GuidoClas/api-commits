@@ -10,7 +10,7 @@
   <p align="center">
     API Backend for commits-web project
     <br />
-    <a href="https://api-commits.vercel.app/api/v1/docs"><strong>API Docs »</strong></a>
+    <a href="https://api-commits.vercel.app/api/v1/docs"><strong>Swagger API Docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/GuidoClas/commits-web/issues">Report Bug/Feature</a>
@@ -46,8 +46,6 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About
-
-[![COMMIT_API][product-screenshot]](https://api-commits.vercel.app/api/v1/docs)
 
 API for Git Commit history viewer
 
@@ -125,5 +123,3 @@ To run this project on your local machine or deploy it to a server we need to us
 * Website: [guidoclas.com](https://guidoclas.com)
 *	Github: [@GuidoClas](https://github.com/GuidoClas)
 *	LinkedIn: [Guido Clas](https://www.linkedin.com/in/guido-clas/)
-
-[product-screenshot]: assets/back_swagger.png

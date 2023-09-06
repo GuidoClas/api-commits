@@ -4,7 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
 import axios, { AxiosHeaders, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import { first, firstValueFrom } from 'rxjs';
-import { mockBranches } from '../../../test/mocks';
+import { mockBranches } from '../../../../test/mocks';
 
 describe('BranchesService', () => {
   let service: BranchesService;

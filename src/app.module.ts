@@ -3,7 +3,7 @@ import { CommitsModule } from './commits/commits.module';
 import { BranchesModule } from './branches/branches.module';
 import { ConfigModule } from '@nestjs/config';
 import { APP_FILTER } from '@nestjs/core';
-import { HttpExceptionFilter } from './middleware/http-exception.filter';
+import { HttpExceptionFilter } from './infrastructure/filters/http-exception.filter';
 
 
 @Module({

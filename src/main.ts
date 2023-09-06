@@ -2,14 +2,15 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { customCssUrl, customJs, customfavIcon } from './infrastructure/common/swagger/constants';
+import { corsConfig } from './infrastructure/common/cors/config';
 
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const logger = new Logger('Bootstrap');
 
-  app.enableCors({ credentials: true, origin: ['https://commits-web.vercel.app', 'http://localhost:8090'], methods: 'GET,HEAD,PUT,PATCH,POST,DELETE' })
-
+  app.enableCors(corsConfig);
   app.setGlobalPrefix('api/v1');
   app.useGlobalPipes(
     new ValidationPipe({
@@ -31,16 +32,9 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/v1/docs', app, document, {
     customSiteTitle: 'Commit API Docs',
-    customfavIcon: 'https://github.com/swagger.png?size=200',
-    customJs: [
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-bundle.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-standalone-preset.min.js',
-    ],
-    customCssUrl: [
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.min.css',
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-standalone-preset.min.css',
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.css',
-    ],
+    customfavIcon: customfavIcon,
+    customJs: customJs,
+    customCssUrl: customCssUrl,
   });
    
   await app.listen(process.env.PORT || 3000);

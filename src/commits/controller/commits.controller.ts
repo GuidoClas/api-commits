@@ -1,6 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { CommitsService } from '../service/commits.service';
-import { ShaDTO } from '../dto/ShaDTO';
+import { ShaDTO } from '../domain/dto/ShaDTO';
 import { ApiTags } from '@nestjs/swagger';
 
 

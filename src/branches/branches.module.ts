@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { BranchesService } from './service/branches.service';
-import { BranchesController } from './controller/branches.controller';
+import { BranchesService } from './application/service/branches.service';
+import { BranchesController } from './application/controller/branches.controller';
 import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
 

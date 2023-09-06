@@ -6,7 +6,7 @@ import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { of } from 'rxjs/internal/observable/of';
 import { first, firstValueFrom } from 'rxjs';
-import { ShaDTO } from '../dto/ShaDTO';
+import { ShaDTO } from '../domain/dto/ShaDTO';
 
 describe('CommitsController', () => {
   let controller: CommitsController;

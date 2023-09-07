@@ -2,11 +2,11 @@ import { HttpService } from "@nestjs/axios";
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { Branch } from "src/branches/domain/entities/Branch";
-import { IGithubService } from "src/shared/domain/service/IGithubService";
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, map } from 'rxjs';
 import { AxiosError } from "axios";
 import { plainToInstance } from 'class-transformer';
-import { Commit } from "src/commits/domain/entities/Commit";
+import { IGithubService } from "src/github/domain/service/IGithubService";
+import { CommitResponse } from "src/commits/domain/entities/CommitResponse";
 
 @Injectable()
 export class GithubService implements IGithubService {
@@ -22,27 +22,33 @@ export class GithubService implements IGithubService {
         throw err;
     })
 
-    const branches: Branch[] = plainToInstance(Branch, data as Record<string, unknown>[]);
+    const branchesData = data as Record<string, unknown>[];
+    const branches: Branch[] = plainToInstance(Branch, branchesData, { strategy: 'excludeAll' });
+
     return branches;
   }
 
-  async findCommitsByBranch(branch: string): Promise<Commit[]> {
+  async findCommitsByBranch(branch: string): Promise<CommitResponse[]> {
     const { data } = await firstValueFrom(this.httpService.get(`${this.githubApiUrl}/commits?sha=${branch}`))
     .catch((err: AxiosError) => {
         throw err;
     })
 
-    const commits: Commit[] = plainToInstance(Commit, data as Record<string, unknown>[]);
+    const commitsData = data as Record<string, unknown>[];
+    const commits: CommitResponse[] = plainToInstance(CommitResponse, commitsData, { strategy: 'excludeAll', enableImplicitConversion: true });
+
     return commits;
   }
 
-  async findCommitBySha(sha: string): Promise<Commit> {
+  async findCommitBySha(sha: string): Promise<CommitResponse> {
     const { data } = await firstValueFrom(this.httpService.get(`${this.githubApiUrl}/commits/${sha}`))
     .catch((err: AxiosError) => {
         throw err;
     })
 
-    const commit: Commit = plainToInstance(Commit, data);
+    const commitData = data as Record<string, unknown>;
+    const commit: CommitResponse = plainToInstance(CommitResponse, commitData, { strategy: 'excludeAll', enableImplicitConversion: true });
+
     return commit;
   }
 }

@@ -4,11 +4,11 @@ import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { FindCommitByShaUseCase } from './application/useCase/findCommitBySha.use-case';
 import { FindCommitsByBranchUseCase } from './application/useCase/findCommitsByBranch.use-case';
-import { GithubService } from 'src/shared/application/service/github.service';
+import { GithubModule } from 'src/github/github.module';
 
 @Module({
-  imports: [HttpModule, ConfigModule],
+  imports: [HttpModule, ConfigModule, GithubModule],
   controllers: [CommitsController],
-  providers: [FindCommitByShaUseCase, FindCommitsByBranchUseCase, GithubService],
+  providers: [FindCommitByShaUseCase, FindCommitsByBranchUseCase],
 })
-export class CommitsModule {}
+export class CommitsModule { }

@@ -2,8 +2,8 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { customCssUrl, customJs, customfavIcon } from './infrastructure/common/swagger/constants';
-import { corsConfig } from './infrastructure/common/cors/config';
+import { customCssUrl, customJs, customfavIcon } from './infrastructure/swagger/constants';
+import { corsConfig } from './infrastructure/cors/config';
 
 
 async function bootstrap() {

@@ -9,7 +9,7 @@ export class BranchesController {
   constructor(private readonly findAllBranchesUseCase: FindAllBranchesUseCase) {}
 
   @Get()
-  async findAll() {
+  async findAll(): Promise<Branch[]> {
     return this.findAllBranchesUseCase.execute();
   }
 

@@ -1,10 +1,10 @@
 import { Branch } from "src/branches/domain/entities/Branch";
-import { IBranchesService } from "src/branches/domain/service/IBranchesService";
+import { IGithubService } from "src/shared/domain/service/IGithubService";
 
 export class FindAllBranchesUseCase {
-    constructor(private readonly branchesService: IBranchesService) {}
+    constructor(private readonly githubService: IGithubService) {}
 
     async execute(): Promise<Branch[]> {
-        return await this.branchesService.findAll();
+        return await this.githubService.findAllBranches();
     }
 }

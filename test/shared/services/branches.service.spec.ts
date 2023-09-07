@@ -1,21 +1,20 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { BranchesService } from './branches.service';
 import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
+import { GithubService } from 'src/shared/application/service/github.service';
 import axios, { AxiosHeaders, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
-import { first, firstValueFrom } from 'rxjs';
-import { mockBranches } from '../../../../test/mocks';
+import { mockBranches } from '../../mocks';
 
 describe('BranchesService', () => {
-  let service: BranchesService;
+  let service: GithubService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [HttpModule, ConfigModule],
-      providers: [BranchesService],
+      providers: [GithubService],
     }).compile();
 
-    service = module.get<BranchesService>(BranchesService);
+    service = module.get<GithubService>(GithubService);
   });
 
   it('should be defined', () => {
@@ -40,8 +39,8 @@ describe('BranchesService', () => {
 
       mockAxiosGet.mockImplementation(async () => mockResponse);
 
-      const result = await service.findAll();
-      expect(firstValueFrom(result.pipe(first()))).resolves.toEqual(mockBranches)
+      const result = await service.findAllBranches();
+      expect(result).resolves.toEqual(mockBranches)
     });
   });
 });

@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CommitsService } from './commits.service';
+import { CommitsService } from '../../../src/commits/application/service/commits.service';
 import { HttpModule } from '@nestjs/axios';
 import axios, { AxiosResponse, InternalAxiosRequestConfig, AxiosHeaders } from 'axios';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { first, firstValueFrom } from 'rxjs';
-import { mockCommits } from '../../../test/mocks';
+import { mockCommits } from '../../mocks';
 
 describe('CommitsService', () => {
   let service: CommitsService;

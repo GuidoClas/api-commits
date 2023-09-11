@@ -5,4 +5,8 @@ export class Commit {
   @Type(() => Committer)
   @Expose({ name: 'committer' })
   committer: Committer;
+
+  
+  @Expose({ name: 'message' })
+  message: string;
 }

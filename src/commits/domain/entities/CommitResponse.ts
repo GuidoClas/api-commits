@@ -12,9 +12,6 @@ export class CommitResponse {
   @Expose({ name: 'commit' })
   commit: Commit;
 
-  @Expose({ name: 'message' })
-  message: string;
-
   @Expose({ name: 'html_url' })
   html_url: string;
 }

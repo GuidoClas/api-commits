@@ -3,7 +3,7 @@ import { BranchesController } from './branches.controller';
 import { BranchesService } from '../service/branches.service';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
-import { mockBranches } from '../../../test/mocks';
+import { mockBranches } from '../../../../test/mocks';
 import { first, of, firstValueFrom } from 'rxjs';
 
 describe('BranchesController', () => {

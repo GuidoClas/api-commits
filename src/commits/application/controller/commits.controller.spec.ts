@@ -1,23 +1,23 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CommitsController } from './commits.controller';
-import { CommitsService } from '../service/commits.service';
-import { mockCommits } from '../../../test/mocks';
+import { mockCommits } from '../../../../test/mocks';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { of } from 'rxjs/internal/observable/of';
 import { first, firstValueFrom } from 'rxjs';
-import { ShaDTO } from '../dto/ShaDTO';
+import { ShaDTO } from '../../domain/dto/ShaDTO';
+import { GithubService } from 'src/shared/application/service/github.service';
 
 describe('CommitsController', () => {
   let controller: CommitsController;
-  let service: CommitsService;
+  let service: GithubService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [HttpModule, ConfigModule],
       controllers: [CommitsController],
       providers: [{
-        provide: CommitsService,
+        provide: GithubService,
         useValue: {
           findAllByBranch: jest.fn(() => of(mockCommits)),
           findOne: jest.fn(() => of(mockCommits[0])),
@@ -26,30 +26,30 @@ describe('CommitsController', () => {
     }).compile();
 
     controller = module.get<CommitsController>(CommitsController);
-    service = module.get<CommitsService>(CommitsService);
+    service = module.get<GithubService>(GithubService);
   });
 
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
 
-  describe('findAllByBranch', () => {
+  describe('findCommitsByBranch', () => {
     it('should return an array of commits by branch', async () => {
       const expectedResult = mockCommits;
-      jest.spyOn(service, 'findAllByBranch').mockReturnValue(of(expectedResult));
+      jest.spyOn(service, 'findCommitsByBranch').mockReturnValue(expectedResult);
 
       const result = await controller.findAll("main");
-      await expect(firstValueFrom(result.pipe(first()))).resolves.toEqual(expectedResult);
+      await expect(result).resolves.toEqual(expectedResult);
     });
   });
 
   describe('findOneBySha', () => {
     it('should return a commit object by its sha', async () => {
       const expectedResult = mockCommits[0];
-      jest.spyOn(service, 'findOne').mockReturnValue(of(expectedResult));
+      jest.spyOn(service, 'findCommitBySha').mockReturnValue(expectedResult);
 
       const result = await controller.findOne(new ShaDTO());
-      await expect(firstValueFrom(result.pipe(first()))).resolves.toEqual(expectedResult);
+      await expect(result).resolves.toEqual(expectedResult);
     });
   });
 

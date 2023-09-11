@@ -1,12 +1,15 @@
 import { Module } from '@nestjs/common';
-import { BranchesService } from './service/branches.service';
-import { BranchesController } from './controller/branches.controller';
+import { BranchesController } from './application/controller/branches.controller';
 import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
+import { FindAllBranchesUseCase } from './application/useCase/findAllBranchesUseCase';
+import { GithubModule } from 'src/github/github.module';
 
 @Module({
-  imports: [HttpModule, ConfigModule],
+  imports: [HttpModule, ConfigModule, GithubModule],
   controllers: [BranchesController],
-  providers: [BranchesService],
+  providers: [
+    FindAllBranchesUseCase
+  ],
 })
 export class BranchesModule {}

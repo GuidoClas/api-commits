@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
-import { GithubService } from 'src/shared/application/service/github.service';
+import { GithubService } from '../../../src/github/application/service/github.service';
 import axios, { AxiosHeaders, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import { mockBranches } from '../../mocks';
 

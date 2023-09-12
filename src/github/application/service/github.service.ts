@@ -2,7 +2,7 @@ import { HttpService } from "@nestjs/axios";
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { Branch } from "src/branches/domain/entities/Branch";
-import { firstValueFrom, map } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import { AxiosError } from "axios";
 import { plainToInstance } from 'class-transformer';
 import { IGithubService } from "src/github/domain/service/IGithubService";

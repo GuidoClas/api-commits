@@ -1,19 +1,18 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CommitsService } from '../../../src/commits/application/service/commits.service';
 import { HttpModule } from '@nestjs/axios';
 import axios, { AxiosResponse, InternalAxiosRequestConfig, AxiosHeaders } from 'axios';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { first, firstValueFrom } from 'rxjs';
 import { mockCommits } from '../../mocks';
+import { GithubService } from '../../../src/github/application/service/github.service';
 
 describe('CommitsService', () => {
-  let service: CommitsService;
+  let service: GithubService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [HttpModule, ConfigModule],
       providers: [
-        CommitsService,
+        GithubService,
         {
           provide: ConfigService,
           useValue: {
@@ -23,7 +22,7 @@ describe('CommitsService', () => {
       ],
     }).compile();
 
-    service = module.get<CommitsService>(CommitsService);
+    service = module.get<GithubService>(GithubService);
   });
 
   it('should be defined', () => {
@@ -48,8 +47,8 @@ describe('CommitsService', () => {
 
       mockAxiosGet.mockImplementation(async () => mockResponse);
 
-      const result = await service.findAllByBranch('main');
-      expect(firstValueFrom(result.pipe(first()))).resolves.toEqual(mockCommits)
+      const result = await service.findCommitsByBranch('main');
+      expect(result).resolves.toEqual(mockCommits)
     });
   });
 
@@ -71,8 +70,8 @@ describe('CommitsService', () => {
 
       mockAxiosGet.mockImplementation(async () => mockResponse);
 
-      const result = await service.findAllByBranch('main');
-      expect(firstValueFrom(result.pipe(first()))).resolves.toEqual(mockCommits[0])
+      const result = await service.findCommitBySha('sha');
+      expect(result).resolves.toEqual(mockCommits[0])
     });
   });
 });

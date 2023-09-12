@@ -1,29 +1,28 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { BranchesController } from './branches.controller';
-import { BranchesService } from '../service/branches.service';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { mockBranches } from '../../../../test/mocks';
-import { first, of, firstValueFrom } from 'rxjs';
+import { GithubService } from 'src/github/application/service/github.service';
 
 describe('BranchesController', () => {
   let controller: BranchesController;
-  let service: BranchesService;
+  let service: GithubService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [HttpModule, ConfigModule],
       controllers: [BranchesController],
       providers: [{
-        provide: BranchesService,
+        provide: GithubService,
         useValue: {
-          findAll: jest.fn(() => of(mockBranches)),
+          findAllBranches: jest.fn(() => mockBranches),
         },
       }],
     }).compile();
 
     controller = module.get<BranchesController>(BranchesController);
-    service = module.get<BranchesService>(BranchesService);
+    service = module.get<GithubService>(GithubService);
   });
 
   it('should be defined', () => {
@@ -33,10 +32,10 @@ describe('BranchesController', () => {
   describe('findAll', () => {
     it('should return an array of branches', async () => {
       const expectedResult = mockBranches;
-      jest.spyOn(service, 'findAll').mockReturnValue(of(expectedResult));
+      jest.spyOn(service, 'findAllBranches').mockReturnValue(Promise.resolve(expectedResult));
 
       const result = await controller.findAll();
-      await expect(firstValueFrom(result.pipe(first()))).resolves.toEqual(expectedResult);
+      await expect(result).resolves.toEqual(expectedResult);
     });
   });
 });

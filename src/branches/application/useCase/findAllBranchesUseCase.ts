@@ -1,5 +1,5 @@
 import { Inject } from "@nestjs/common";
-import { Branch } from "src/branches/domain/entities/Branch";
+import { Branch } from "../../../github/domain/entities/Branch";
 import { IGithubService } from "src/github/domain/service/IGithubService";
 
 export class FindAllBranchesUseCase {

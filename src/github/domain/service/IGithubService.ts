@@ -1,5 +1,5 @@
-import { Branch } from "src/branches/domain/entities/Branch";
-import { CommitResponse } from "src/commits/domain/entities/CommitResponse";
+import { Branch } from "../../domain/entities/Branch";
+import { CommitResponse } from "../../domain/entities/CommitResponse";
 
 export interface IGithubService {
     findAllBranches(): Promise<Branch[]>

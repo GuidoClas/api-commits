@@ -1,12 +1,12 @@
 import { HttpService } from "@nestjs/axios";
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
-import { Branch } from "src/branches/domain/entities/Branch";
+import { Branch } from "../../domain/entities/Branch";
 import { firstValueFrom } from 'rxjs';
 import { AxiosError } from "axios";
 import { plainToInstance } from 'class-transformer';
 import { IGithubService } from "src/github/domain/service/IGithubService";
-import { CommitResponse } from "src/commits/domain/entities/CommitResponse";
+import { CommitResponse } from "../../domain/entities/CommitResponse";
 
 @Injectable()
 export class GithubService implements IGithubService {

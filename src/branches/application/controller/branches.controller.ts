@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { FindAllBranchesUseCase } from '../useCase/findAllBranchesUseCase';
-import { Branch } from 'src/branches/domain/entities/Branch';
+import { Branch } from '../../../github/domain/entities/Branch';
 
 @Controller('branches')
 @ApiTags('Branches')
